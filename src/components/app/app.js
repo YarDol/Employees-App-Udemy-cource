@@ -37,19 +37,21 @@ class App extends Component{
     }
 
     addItem = (name, salary) => {
-        const newItem = {
-            name, 
-            salary,
-            increase: false,
-            like: false,
-            id: this.maxId++
-        }
-        this.setState(({data}) => {
-            const newArr = [...data, newItem];
-            return {
-                data: newArr
+        if(name !== '' && (salary !== 0 && salary !== '')){
+            const newItem = {
+                name, 
+                salary,
+                increase: false,
+                like: false,
+                id: this.maxId++
             }
-        });
+            this.setState(({data}) => {
+                const newArr = [...data, newItem];
+                return {
+                    data: newArr
+                }
+            });
+        }
     }
 
     onToggleProp = (id, prop) => {
